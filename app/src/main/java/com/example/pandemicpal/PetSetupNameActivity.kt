@@ -20,7 +20,7 @@ class PetSetupNameActivity : AppCompatActivity() {
             } else {
                 // TODO Set pet name
                 // Start pet activity
-                startActivity(Intent(this, PetPage::class.java))
+                startActivity(Intent(this, PetPageActivity::class.java))
             }
         }
 
