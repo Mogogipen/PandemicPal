@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         startButton.setOnClickListener {
 
             if (hasPet){
-                startActivity(Intent(this,PetPage::class.java))
+                startActivity(Intent(this,PetPageActivity::class.java))
             }else{
                 startActivity(Intent(this,PetSetupActivity::class.java))
             }
