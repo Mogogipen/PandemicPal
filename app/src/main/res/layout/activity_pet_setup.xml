@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PetSetupActivity">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/btnDoggo"
+                android:layout_width="172dp"
+                android:layout_height="138dp"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/doggo" />
+
+            <ImageButton
+                android:id="@+id/btnCat"
+                android:layout_width="172dp"
+                android:layout_height="138dp"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/cat" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/btnFish"
+                android:layout_width="172dp"
+                android:layout_height="138dp"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/fish" />
+
+            <ImageButton
+                android:id="@+id/btnChicken"
+                android:layout_width="172dp"
+                android:layout_height="138dp"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/chicken" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/btnRabbit"
+                android:layout_width="172dp"
+                android:layout_height="138dp"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/rabbit" />
+
+            <ImageButton
+                android:id="@+id/btnAxolotl"
+                android:layout_width="172dp"
+                android:layout_height="138dp"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/axolotl" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/btnDragon"
+                android:layout_width="172dp"
+                android:layout_height="138dp"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/dragon" />
+
+            <ImageButton
+                android:id="@+id/btnUnicorn"
+                android:layout_width="172dp"
+                android:layout_height="138dp"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unicorn" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/press_start_2p"
+        android:text="Select Your Pet"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

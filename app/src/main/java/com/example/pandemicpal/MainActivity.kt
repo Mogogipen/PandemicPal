@@ -12,14 +12,14 @@ class MainActivity : AppCompatActivity() {
 
         var startButton = findViewById<Button>(R.id.startButton)
         // have some kind of code here to check if a pet is present
-        var hasPet = true
+        var hasPet = false
 
         startButton.setOnClickListener {
 
             if (hasPet){
                 startActivity(Intent(this,PetPage::class.java))
             }else{
-                // startActivity(Intent(this,SetupNewPet::class.java))
+                startActivity(Intent(this,PetSetupActivity::class.java))
             }
 
         }
