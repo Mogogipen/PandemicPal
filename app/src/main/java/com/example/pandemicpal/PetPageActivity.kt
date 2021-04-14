@@ -12,6 +12,7 @@ class PetPageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pet_page)
 
         var petName = findViewById<TextView>(R.id.petName)
+        var backgroundImage = findViewById<ImageView>(R.id.backgroundImage)
         var moreOptionsButton = findViewById<ImageButton>(R.id.moreOptionsButton)
         var feedButton = findViewById<Button>(R.id.feedButton)
         var walkButton = findViewById<Button>(R.id.walkButton)
@@ -23,12 +24,24 @@ class PetPageActivity : AppCompatActivity() {
         moreOptionsButton.setOnClickListener{
             startActivity(Intent(this, MoreOptionsActivity::class.java))
         }
-        feedButton.setOnClickListener{ Toast.makeText(this, "Worked", Toast.LENGTH_SHORT).show()}
-        walkButton.setOnClickListener{ Toast.makeText(this, "Worked", Toast.LENGTH_SHORT).show()}
-        playButton.setOnClickListener{ Toast.makeText(this, "Worked", Toast.LENGTH_SHORT).show()}
-        groomButton.setOnClickListener{ Toast.makeText(this, "Worked", Toast.LENGTH_SHORT).show()}
-        medsButton.setOnClickListener{ Toast.makeText(this, "Worked", Toast.LENGTH_SHORT).show()}
-        toiletButton.setOnClickListener{ Toast.makeText(this, "Worked", Toast.LENGTH_SHORT).show()}
+        feedButton.setOnClickListener{
+            backgroundImage.setImageResource(R.drawable.room_kitchen)
+        }
+        walkButton.setOnClickListener{
+            backgroundImage.setImageResource(R.drawable.room_meadow)
+        }
+        playButton.setOnClickListener{
+            backgroundImage.setImageResource(R.drawable.room_default)
+        }
+        groomButton.setOnClickListener{
+            backgroundImage.setImageResource(R.drawable.room_default)
+        }
+        medsButton.setOnClickListener{
+            backgroundImage.setImageResource(R.drawable.room_default)
+        }
+        toiletButton.setOnClickListener{
+            backgroundImage.setImageResource(R.drawable.room_bath)
+        }
 
     }
 

@@ -21,9 +21,11 @@ class PetSetupNameActivity : AppCompatActivity() {
             .load(R.drawable.doggo)
             .into(petImage)
         btnSelect.setOnClickListener {
-            if (nameField.text.toString().length == 0) {
+            if (nameField.text.toString().length == 0 ) {
                 Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show()
-            } else {
+            } else if(nameField.text.toString().length > 10) {
+                Toast.makeText(this, "Name is too long", Toast.LENGTH_SHORT).show()
+            }else{
                 // TODO Set pet name
                 // Start pet activity
                 startActivity(Intent(this, PetPageActivity::class.java))
