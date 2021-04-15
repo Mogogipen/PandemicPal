@@ -1,11 +1,12 @@
 package com.example.pandemicpal
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-enum class PET(val image: Int) {
+enum class PETS(val image: Int) {
     Dog(R.drawable.doggo),
     Cat(R.drawable.cat),
     Rabbit(R.drawable.rabbit),
@@ -23,14 +24,21 @@ class MainActivity : AppCompatActivity() {
 
         var startButton = findViewById<Button>(R.id.startButton)
         // have some kind of code here to check if a pet is present
-        var hasPet = false
+        val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+        val hasPet : Boolean? = sharedPreferences.getBoolean("hasPet", false)
 
         startButton.setOnClickListener {
 
-            if (hasPet){
+            if (hasPet == true){
                 startActivity(Intent(this,PetPageActivity::class.java))
             }else{
                 startActivity(Intent(this,PetSetupActivity::class.java))
+                // create an editor for sharedPreferences
+//                val editor: SharedPreferences.Editor = sharedPreferences.edit()
+//                // save data
+//                editor.apply{
+//                    putBoolean("hasPet", true)
+//                }.apply()
             }
 
         }
