@@ -258,7 +258,7 @@
         app:srcCompat="@drawable/yellow_full" />
 
     <ImageView
-        android:id="@+id/hungerBarImage3"
+        android:id="@+id/healthBarImage"
         android:layout_width="80dp"
         android:layout_height="21dp"
         android:translationX="1dp"

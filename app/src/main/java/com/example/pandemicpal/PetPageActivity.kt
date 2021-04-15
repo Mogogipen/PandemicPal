@@ -23,6 +23,10 @@ class PetPageActivity : AppCompatActivity() {
         var medsButton = findViewById<Button>(R.id.medsButton)
         var toiletButton = findViewById<Button>(R.id.toiletButton)
 
+        var healthStatusBarImage = findViewById<ImageView>(R.id.healthBarImage)
+        var happinessStatusBarImage = findViewById<ImageView>(R.id.happinessBarImage)
+        var hungerStatusBarImage = findViewById<ImageView>(R.id.hungerBarImage)
+
 
         petName.setText(intent.getStringExtra("petName").toString())
         moreOptionsButton.setOnClickListener{
@@ -52,6 +56,11 @@ class PetPageActivity : AppCompatActivity() {
         }
         medsButton.setOnClickListener{
             backgroundImage.setImageResource(R.drawable.room_default)
+            // Testing for status bars
+//            happinessStatusBarImage.setImageResource(R.drawable.yellow_half)
+//            hungerStatusBarImage.setImageResource(R.drawable.blue_half)
+//            healthStatusBarImage.setImageResource(R.drawable.red_half)
+
         }
         toiletButton.setOnClickListener{
             backgroundImage.setImageResource(R.drawable.room_bath)
