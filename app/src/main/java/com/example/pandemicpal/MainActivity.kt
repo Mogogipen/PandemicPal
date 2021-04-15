@@ -5,6 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
+enum class PET(val image: Int) {
+    Dog(R.drawable.doggo),
+    Cat(R.drawable.cat),
+    Rabbit(R.drawable.rabbit),
+    Chicken(R.drawable.chicken),
+    Fish(R.drawable.fish),
+    Axolotl(R.drawable.axolotl),
+    Dragon(R.drawable.dragon),
+    Unicorn(R.drawable.unicorn)
+}
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

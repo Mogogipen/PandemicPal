@@ -14,21 +14,25 @@ class PetSetupNameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet_setup_name)
 
+        var pet = intent.getSerializableExtra("pet") as PET
+
         var nameField = findViewById<EditText>(R.id.editTextPetName)
         var btnSelect = findViewById<Button>(R.id.btnSelectName)
         var petImage = findViewById<ImageView>(R.id.imageView)
         Glide.with(this)
-            .load(R.drawable.doggo)
+            .load(pet.image)
             .into(petImage)
+
         btnSelect.setOnClickListener {
-            if (nameField.text.toString().length == 0 ) {
+            if (nameField.text.toString().isEmpty()) {
                 Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show()
             } else if(nameField.text.toString().length > 10) {
                 Toast.makeText(this, "Name is too long", Toast.LENGTH_SHORT).show()
             }else{
-                // TODO Set pet name
-                // Start pet activity
-                startActivity(Intent(this, PetPageActivity::class.java))
+                var intent = Intent(this, PetPageActivity::class.java)
+                intent.putExtra("pet", pet)
+                intent.putExtra("petName", nameField.text.toString())
+                startActivity(intent)
             }
         }
 

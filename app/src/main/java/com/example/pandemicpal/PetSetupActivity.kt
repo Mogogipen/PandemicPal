@@ -9,24 +9,13 @@ import com.bumptech.glide.Glide
 
 class PetSetupActivity : AppCompatActivity() {
 
-    enum class PET {
-        DOG,
-        CAT,
-        RABBIT,
-        CHICKEN,
-        FISH,
-        AXOLOTL,
-        DRAGON,
-        UNICORN
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet_setup)
 
         var btnDog = findViewById<ImageButton>(R.id.btnDoggo)
         btnDog.setOnClickListener {
-            selectPet(PET.DOG)
+            selectPet(PET.Dog)
         }
         var dogImg = findViewById<ImageView>(R.id.btnDoggo)
         Glide.with(this)
@@ -35,7 +24,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnCat = findViewById<ImageButton>(R.id.btnCat)
         btnCat.setOnClickListener {
-            selectPet(PET.CAT)
+            selectPet(PET.Cat)
         }
         var catImg = findViewById<ImageView>(R.id.btnCat)
         Glide.with(this)
@@ -44,7 +33,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnRabbit = findViewById<ImageButton>(R.id.btnRabbit)
         btnRabbit.setOnClickListener {
-            selectPet(PET.RABBIT)
+            selectPet(PET.Rabbit)
         }
         var rabbitImg = findViewById<ImageView>(R.id.btnRabbit)
         Glide.with(this)
@@ -53,7 +42,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnChicken = findViewById<ImageButton>(R.id.btnChicken)
         btnChicken.setOnClickListener {
-            selectPet(PET.CHICKEN)
+            selectPet(PET.Chicken)
         }
         var chickenImg = findViewById<ImageView>(R.id.btnChicken)
         Glide.with(this)
@@ -62,7 +51,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnFish = findViewById<ImageButton>(R.id.btnFish)
         btnFish.setOnClickListener {
-            selectPet(PET.FISH)
+            selectPet(PET.Fish)
         }
         var fishImg = findViewById<ImageView>(R.id.btnFish)
         Glide.with(this)
@@ -71,7 +60,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnAxolotl = findViewById<ImageButton>(R.id.btnAxolotl)
         btnAxolotl.setOnClickListener {
-            selectPet(PET.AXOLOTL)
+            selectPet(PET.Axolotl)
         }
         var axolotlImg = findViewById<ImageView>(R.id.btnAxolotl)
         Glide.with(this)
@@ -80,7 +69,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnDragon = findViewById<ImageButton>(R.id.btnDragon)
         btnDragon.setOnClickListener {
-            selectPet(PET.DRAGON)
+            selectPet(PET.Dragon)
         }
         var dragonImg = findViewById<ImageView>(R.id.btnDragon)
         Glide.with(this)
@@ -89,7 +78,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnUnicorn = findViewById<ImageButton>(R.id.btnUnicorn)
         btnUnicorn.setOnClickListener {
-            selectPet(PET.UNICORN)
+            selectPet(PET.Unicorn)
         }
         var unicornImg = findViewById<ImageView>(R.id.btnUnicorn)
         Glide.with(this)
@@ -99,8 +88,8 @@ class PetSetupActivity : AppCompatActivity() {
     }
 
     fun selectPet(pet: PET) {
-        // TODO Select pet
-        // Start name setup activity
-        startActivity(Intent(this, PetSetupNameActivity::class.java))
+        var intent = Intent(this, PetSetupNameActivity::class.java)
+        intent.putExtra("pet", pet)
+        startActivity(intent)
     }
 }
