@@ -1,6 +1,7 @@
 package com.example.pandemicpal
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -33,6 +34,13 @@ class PetSetupNameActivity : AppCompatActivity() {
                 intent.putExtra("pet", pet)
                 intent.putExtra("petName", nameField.text.toString())
                 startActivity(intent)
+                val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+                //create an editor for sharedPreferences
+                val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                // save data
+                editor.apply{
+                    putBoolean("hasPet", true)
+                }.apply()
             }
         }
 
