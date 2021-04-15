@@ -13,6 +13,8 @@ class PetSetupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet_setup)
 
+        // Set up each image button to select a pet (run selectPet())
+        // and make each image button load and animate the correct gif
         var btnDog = findViewById<ImageButton>(R.id.btnDoggo)
         btnDog.setOnClickListener {
             selectPet(PETS.Dog)
@@ -87,9 +89,12 @@ class PetSetupActivity : AppCompatActivity() {
 
     }
 
-    fun selectPet(PETS: PETS) {
+    /**
+     * Starts the next activity and puts the pet (of type PETS) in the Intent under the name "pet".
+     */
+    private fun selectPet(type: PETS) {
         var intent = Intent(this, PetSetupNameActivity::class.java)
-        intent.putExtra("pet", PETS)
+        intent.putExtra("pet", type)
         startActivity(intent)
     }
 }

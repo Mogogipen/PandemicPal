@@ -110,6 +110,9 @@ class Pet (
     fun getSick() : Boolean {return this.sick}
     fun setSick(bathroom:Boolean) {this.sick = sick}
 
+    /**
+     * Saves all pet data to the device as well as a time stamp
+     */
     fun save(context: Context) {
         val sharedPreferences = context.getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()

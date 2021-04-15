@@ -15,34 +15,48 @@ class PetSetupNameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet_setup_name)
 
-        var pet = intent.getSerializableExtra("pet") as PETS
+        // Load data from intent
+        var type = intent.getSerializableExtra("pet") as PETS
 
+        // Get all views
         var nameField = findViewById<EditText>(R.id.editTextPetName)
         var btnSelect = findViewById<Button>(R.id.btnSelectName)
         var petImage = findViewById<ImageView>(R.id.imageView)
+
+        // Set image to animated pet gif
         Glide.with(this)
-            .load(pet.image)
+            .load(type.image)
             .into(petImage)
 
+        // Set onClickListener to name the pet, pass data to intent, and start PetPageActivity
         btnSelect.setOnClickListener {
-            if (nameField.text.toString().isEmpty()) {
+            // Check for valid name
+            var petName = nameField.text.toString()
+            if (petName.isEmpty()) {
                 Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show()
-            } else if(nameField.text.toString().length > 10) {
+            } else if(petName.length > 10) {
                 Toast.makeText(this, "Name is too long", Toast.LENGTH_SHORT).show()
             }else{
-                var intent = Intent(this, PetPageActivity::class.java)
-                intent.putExtra("pet", pet)
-                intent.putExtra("petName", nameField.text.toString())
-                startActivity(intent)
-                val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
-                //create an editor for sharedPreferences
-                val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                // save data
-                editor.apply{
-                    putBoolean("hasPet", true)
-                }.apply()
+                selectPetName(type, petName)
             }
         }
 
+    }
+
+    private fun selectPetName(pet: PETS, petName: String) {
+
+        // If name is valid, pass data and load the next activity
+        var intent = Intent(this, PetPageActivity::class.java)
+        intent.putExtra("pet", pet)
+        intent.putExtra("petName", petName)
+        startActivity(intent)
+        val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+
+        // Set the "hasPet" data to true
+        // TODO maybe we should do this in PetPageActivity so it won't set the hasPet to true if pet creation fails
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.apply{
+            putBoolean("hasPet", true)
+        }.apply()
     }
 }
