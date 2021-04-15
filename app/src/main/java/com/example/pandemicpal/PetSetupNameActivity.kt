@@ -14,7 +14,7 @@ class PetSetupNameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet_setup_name)
 
-        var pet = intent.getSerializableExtra("pet") as PET
+        var pet = intent.getSerializableExtra("pet") as PETS
 
         var nameField = findViewById<EditText>(R.id.editTextPetName)
         var btnSelect = findViewById<Button>(R.id.btnSelectName)

@@ -15,7 +15,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnDog = findViewById<ImageButton>(R.id.btnDoggo)
         btnDog.setOnClickListener {
-            selectPet(PET.Dog)
+            selectPet(PETS.Dog)
         }
         var dogImg = findViewById<ImageView>(R.id.btnDoggo)
         Glide.with(this)
@@ -24,7 +24,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnCat = findViewById<ImageButton>(R.id.btnCat)
         btnCat.setOnClickListener {
-            selectPet(PET.Cat)
+            selectPet(PETS.Cat)
         }
         var catImg = findViewById<ImageView>(R.id.btnCat)
         Glide.with(this)
@@ -33,7 +33,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnRabbit = findViewById<ImageButton>(R.id.btnRabbit)
         btnRabbit.setOnClickListener {
-            selectPet(PET.Rabbit)
+            selectPet(PETS.Rabbit)
         }
         var rabbitImg = findViewById<ImageView>(R.id.btnRabbit)
         Glide.with(this)
@@ -42,7 +42,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnChicken = findViewById<ImageButton>(R.id.btnChicken)
         btnChicken.setOnClickListener {
-            selectPet(PET.Chicken)
+            selectPet(PETS.Chicken)
         }
         var chickenImg = findViewById<ImageView>(R.id.btnChicken)
         Glide.with(this)
@@ -51,7 +51,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnFish = findViewById<ImageButton>(R.id.btnFish)
         btnFish.setOnClickListener {
-            selectPet(PET.Fish)
+            selectPet(PETS.Fish)
         }
         var fishImg = findViewById<ImageView>(R.id.btnFish)
         Glide.with(this)
@@ -60,7 +60,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnAxolotl = findViewById<ImageButton>(R.id.btnAxolotl)
         btnAxolotl.setOnClickListener {
-            selectPet(PET.Axolotl)
+            selectPet(PETS.Axolotl)
         }
         var axolotlImg = findViewById<ImageView>(R.id.btnAxolotl)
         Glide.with(this)
@@ -69,7 +69,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnDragon = findViewById<ImageButton>(R.id.btnDragon)
         btnDragon.setOnClickListener {
-            selectPet(PET.Dragon)
+            selectPet(PETS.Dragon)
         }
         var dragonImg = findViewById<ImageView>(R.id.btnDragon)
         Glide.with(this)
@@ -78,7 +78,7 @@ class PetSetupActivity : AppCompatActivity() {
 
         var btnUnicorn = findViewById<ImageButton>(R.id.btnUnicorn)
         btnUnicorn.setOnClickListener {
-            selectPet(PET.Unicorn)
+            selectPet(PETS.Unicorn)
         }
         var unicornImg = findViewById<ImageView>(R.id.btnUnicorn)
         Glide.with(this)
@@ -87,9 +87,9 @@ class PetSetupActivity : AppCompatActivity() {
 
     }
 
-    fun selectPet(pet: PET) {
+    fun selectPet(PETS: PETS) {
         var intent = Intent(this, PetSetupNameActivity::class.java)
-        intent.putExtra("pet", pet)
+        intent.putExtra("pet", PETS)
         startActivity(intent)
     }
 }
