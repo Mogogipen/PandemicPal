@@ -159,17 +159,6 @@
         app:strokeColor="#000000"
         app:strokeWidth="5dp" />
 
-    <ImageView
-        android:id="@+id/backgroundImage"
-        android:layout_width="349dp"
-        android:layout_height="356dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44"
-        app:srcCompat="@drawable/room_default" />
-
     <ImageButton
         android:id="@+id/moreOptionsButton"
         android:layout_width="55dp"
@@ -270,5 +259,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.046"
         app:srcCompat="@drawable/red_full" />
+
+    <FrameLayout
+        android:layout_width="348dp"
+        android:layout_height="354dp"
+        android:layout_marginTop="164dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/backgroundImage"
+            android:layout_width="349dp"
+            android:layout_height="356dp"
+            app:srcCompat="@drawable/room_default" />
+
+        <ImageView
+            android:id="@+id/petImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="0dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/axolotl" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
