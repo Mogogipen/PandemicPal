@@ -30,13 +30,15 @@ class PetPageActivity : AppCompatActivity() {
         var hungerStatusBarImage = findViewById<ImageView>(R.id.hungerBarImage)
 
 
-        var petType = intent.getSerializableExtra("pet")
-        if (petType == null) petType = PETS.Dog
-        else petType = petType as PETS
         petName.setText(intent.getStringExtra("petName").toString())
-        Glide.with(this)
-                .load(petType.image)
-                .into(petImage)
+        var petType = intent.getSerializableExtra("pet")
+        if (petType == null);
+        else {
+            petType = petType as PETS
+            Glide.with(this)
+                    .load(petType.image)
+                    .into(petImage)
+        }
         moreOptionsButton.setOnClickListener{
             startActivity(Intent(this, MoreOptionsActivity::class.java))
         }
