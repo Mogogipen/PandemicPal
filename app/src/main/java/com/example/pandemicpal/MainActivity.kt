@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         var startButton = findViewById<Button>(R.id.startButton)
         // have some kind of code here to check if a pet is present
         val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+        sharedPreferences.edit().remove("hasPet").commit()
         val hasPet : Boolean? = sharedPreferences.getBoolean("hasPet", false)
 
         startButton.setOnClickListener {
