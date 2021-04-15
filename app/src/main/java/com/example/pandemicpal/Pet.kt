@@ -3,10 +3,10 @@ package com.example.pandemicpal
 import android.app.Application
 
 class Pet (
-    name:String, type:String, health:Int, hunger:Int, happiness:Int, bathroom:Boolean
+    name:String, type:PETS, health:Int, hunger:Int, happiness:Int, bathroom:Boolean
 ) : Application() {
     private lateinit var name : String
-    private lateinit var type : String
+    private lateinit var type : PETS
     private var health = 100
     private var hunger = 0
     private var happiness = 100
@@ -16,8 +16,8 @@ class Pet (
     fun getName() : String {return this.name}
     fun setName(name:String) {this.name = name}
 
-    fun getType() : String {return this.type}
-    fun setType(type:String) {this.type = type}
+    fun getType() : PETS {return this.type}
+    fun setType(type:PETS) {this.type = type}
 
     fun getHealth() : Int {return this.health}
     fun increaseHealth(healthMod:Int) {
@@ -27,10 +27,10 @@ class Pet (
             this.health += healthMod
     }
     fun decreaseHealth(healthMod:Int) {
-        if(healthMod >= this.health)
+        if((healthMod * type.healthMod) as Int >= this.health)
             dead = true
         else
-            this.health -= healthMod
+            this.health -= (healthMod*type.healthMod) as Int
     }
 
     fun getHunger() : Int {return this.hunger}
@@ -41,10 +41,10 @@ class Pet (
             this.hunger += hungerMod
     }
     fun decreaseHunger(hungerMod:Int) {
-        if(hungerMod >= this.hunger)
+        if((hungerMod * type.hungerMod) as Int >= this.hunger)
             this.hunger = 0
         else
-            this.hunger -= hungerMod
+            this.hunger -= (hungerMod * type.hungerMod) as Int
     }
 
     fun getHappiness() : Int {return this.happiness}
@@ -55,10 +55,10 @@ class Pet (
             this.happiness += happinessMod
     }
     fun decreaseHappiness(happinessMod:Int) {
-        if(happinessMod >= this.happiness)
+        if((happinessMod * type.happinessMod) as Int >= this.happiness)
             this.happiness = 0
         else
-            this.happiness -= happinessMod
+            this.happiness -= (happinessMod * type.happinessMod) as Int
     }
 
     fun getBathroom() : Boolean {return this.bathroom}

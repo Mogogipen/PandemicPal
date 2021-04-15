@@ -6,15 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-enum class PETS(val image: Int) {
-    Dog(R.drawable.doggo),
-    Cat(R.drawable.cat),
-    Rabbit(R.drawable.rabbit),
-    Chicken(R.drawable.chicken),
-    Fish(R.drawable.fish),
-    Axolotl(R.drawable.axolotl),
-    Dragon(R.drawable.dragon),
-    Unicorn(R.drawable.unicorn)
+enum class PETS(val image: Int, val healthMod : Double, val hungerMod : Double, val happinessMod : Double) {
+    Dog(R.drawable.doggo, 1.0, 1.0, 1.0),
+    Cat(R.drawable.cat, 0.75, 1.0, 1.0),
+    Rabbit(R.drawable.rabbit, 1.0, 1.0, .75),
+    Chicken(R.drawable.chicken, 1.0, 1.25, 1.0),
+    Fish(R.drawable.fish, 1.5, 0.5, 1.0),
+    Axolotl(R.drawable.axolotl, 1.5, 1.5, 1.0),
+    Dragon(R.drawable.dragon, 2.0, 1.0, 0.25),
+    Unicorn(R.drawable.unicorn, 0.5, 0.5, 0.5)
 }
 
 class MainActivity : AppCompatActivity() {
