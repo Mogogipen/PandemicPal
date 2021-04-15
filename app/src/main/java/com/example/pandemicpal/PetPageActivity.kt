@@ -23,6 +23,8 @@ class PetPageActivity : AppCompatActivity() {
         var medsButton = findViewById<Button>(R.id.medsButton)
         var toiletButton = findViewById<Button>(R.id.toiletButton)
 
+
+        petName.setText(intent.getStringExtra("petName").toString())
         moreOptionsButton.setOnClickListener{
             startActivity(Intent(this, MoreOptionsActivity::class.java))
         }
