@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.*
+import com.bumptech.glide.Glide
 
 
 class PetPageActivity : AppCompatActivity() {
@@ -15,6 +16,7 @@ class PetPageActivity : AppCompatActivity() {
 
         var petName = findViewById<TextView>(R.id.petName)
         var backgroundImage = findViewById<ImageView>(R.id.backgroundImage)
+        var petImage = findViewById<ImageView>(R.id.petImage)
         var moreOptionsButton = findViewById<ImageButton>(R.id.moreOptionsButton)
         var feedButton = findViewById<Button>(R.id.feedButton)
         var walkButton = findViewById<Button>(R.id.walkButton)
@@ -28,7 +30,13 @@ class PetPageActivity : AppCompatActivity() {
         var hungerStatusBarImage = findViewById<ImageView>(R.id.hungerBarImage)
 
 
+        var petType = intent.getSerializableExtra("pet")
+        if (petType == null) petType = PETS.Dog
+        else petType = petType as PETS
         petName.setText(intent.getStringExtra("petName").toString())
+        Glide.with(this)
+                .load(petType.image)
+                .into(petImage)
         moreOptionsButton.setOnClickListener{
             startActivity(Intent(this, MoreOptionsActivity::class.java))
         }
