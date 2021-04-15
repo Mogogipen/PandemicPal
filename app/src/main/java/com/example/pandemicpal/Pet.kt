@@ -12,6 +12,7 @@ class Pet (
     private var happiness = 100
     private var bathroom = false
     private var dead = false
+    private var sick = false
 
     fun getName() : String {return this.name}
     fun setName(name:String) {this.name = name}
@@ -35,16 +36,16 @@ class Pet (
 
     fun getHunger() : Int {return this.hunger}
     fun increaseHunger(hungerMod:Int) {
-        if(hungerMod + this.hunger > 100)
+        if((hungerMod * type.hungerMod) as Int + this.hunger > 100)
             this.hunger = 100
         else
             this.hunger += hungerMod
     }
     fun decreaseHunger(hungerMod:Int) {
-        if((hungerMod * type.hungerMod) as Int >= this.hunger)
+        if(hungerMod >= this.hunger)
             this.hunger = 0
         else
-            this.hunger -= (hungerMod * type.hungerMod) as Int
+            this.hunger -= hungerMod
     }
 
     fun getHappiness() : Int {return this.happiness}
@@ -63,5 +64,8 @@ class Pet (
 
     fun getBathroom() : Boolean {return this.bathroom}
     fun setBathroom(bathroom:Boolean) {this.bathroom = bathroom}
+
+    fun getSick() : Boolean {return this.sick}
+    fun setSick(bathroom:Boolean) {this.sick = sick}
 
 }
