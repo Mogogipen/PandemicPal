@@ -93,24 +93,24 @@ class PetPageActivity : AppCompatActivity() {
             petAction(R.drawable.room_kitchen)
         }
         walkButton.setOnClickListener{
-            pet.walk()
-            petAction(R.drawable.room_meadow)
+            if (pet.walk())
+                petAction(R.drawable.room_meadow)
         }
         playButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.room_play)
-            pet.play()
+            if (pet.play())
+                petAction(R.drawable.room_play)
         }
         groomButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.groom)
-            pet.groom()
+            if (pet.groom())
+                petAction(R.drawable.groom)
         }
         medsButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.room_meds)
-            pet.meds()
+            if (pet.meds())
+                petAction(R.drawable.room_meds)
         }
         toiletButton.setOnClickListener{
-            pet.toilet()
-            petAction(R.drawable.room_bath)
+            if (pet.toilet())
+                petAction(R.drawable.room_bath)
         }
 
     }
