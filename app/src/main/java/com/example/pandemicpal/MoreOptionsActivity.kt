@@ -14,12 +14,12 @@ class MoreOptionsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_more_options)
 
-        var removePetButton = findViewById<Button>(R.id.deleteButton)
+        val removePetButton = findViewById<Button>(R.id.deleteButton)
 
         removePetButton.setOnClickListener {
 
             val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
-            var alert = AlertDialog.Builder(this)
+            val alert = AlertDialog.Builder(this)
             alert.setTitle("Delete Pet")
             alert.setMessage("Are you sure you want to do this? You cannot retrieve your pet afterwards.")
             alert.setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->

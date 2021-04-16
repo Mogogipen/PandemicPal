@@ -22,14 +22,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var startButton = findViewById<Button>(R.id.startButton)
+        val startButton = findViewById<Button>(R.id.startButton)
         // have some kind of code here to check if a pet is present
         val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
-        val hasPet : Boolean? = sharedPreferences.getBoolean("hasPet", false)
+        val hasPet : Boolean = sharedPreferences.getBoolean("hasPet", false)
 
         startButton.setOnClickListener {
 
-            if (hasPet == true){
+            if (hasPet){
                 startActivity(Intent(this,PetPageActivity::class.java))
             }else{
                 startActivity(Intent(this,PetSetupActivity::class.java))

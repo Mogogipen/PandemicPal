@@ -41,14 +41,14 @@ class Pet (
         //  2 hrs = 7x10^6 milliseconds
         val time = sharedPreferences.getLong("timeStamp", Long.MIN_VALUE)
         val timePassed = System.currentTimeMillis() - time
-        var timeInterval : Long = (7.2 * 10.0.pow(6.0)).toLong()
-        var loopCount = timePassed/timeInterval
+        val timeInterval : Long = (7.2 * 10.0.pow(6.0)).toLong()
+        val loopCount = timePassed/timeInterval
 
         // Simulate passage of time
         if (timePassed >= timeInterval*3) {
             bathroom = true
         } else if (timePassed >= timeInterval/4) {
-            var rand = Random(timePassed)
+            val rand = Random(timePassed)
             bathroom = rand.nextBoolean()
         }
         for (i in 1..loopCount) {
@@ -68,13 +68,13 @@ class Pet (
     fun setType(type:PETS) {this.type = type}
 
     fun getHealth() : Int {return this.health}
-    fun increaseHealth(healthMod:Int) {
+    private fun increaseHealth(healthMod:Int) {
         if(healthMod + this.health > 100)
             this.health = 100
         else
             this.health += healthMod
     }
-    fun decreaseHealth(healthMod:Int) {
+    private fun decreaseHealth(healthMod:Int) {
         if((healthMod * type.healthMod).toInt() >= this.health)
             dead = true
         else
@@ -82,13 +82,13 @@ class Pet (
     }
 
     fun getHunger() : Int {return this.hunger}
-    fun increaseHunger(hungerMod:Int) {
+    private fun increaseHunger(hungerMod:Int) {
         if((hungerMod * type.hungerMod).toInt() + this.hunger > 100)
             this.hunger = 100
         else
             this.hunger += hungerMod
     }
-    fun decreaseHunger(hungerMod:Int) {
+    private fun decreaseHunger(hungerMod:Int) {
         if(hungerMod >= this.hunger)
             this.hunger = 0
         else
@@ -96,13 +96,13 @@ class Pet (
     }
 
     fun getHappiness() : Int {return this.happiness}
-    fun increaseHappiness(happinessMod:Int) {
+    private fun increaseHappiness(happinessMod:Int) {
         if(happinessMod + this.happiness > 100)
             this.happiness = 100
         else
             this.happiness += happinessMod
     }
-    fun decreaseHappiness(happinessMod:Int) {
+    private fun decreaseHappiness(happinessMod:Int) {
         if((happinessMod * type.happinessMod).toInt() >= this.happiness)
             this.happiness = 0
         else
@@ -150,7 +150,7 @@ class Pet (
     fun feed(): Boolean {
         var result = true
         decreaseHunger(10)
-        var currentTime = System.currentTimeMillis()
+        val currentTime = System.currentTimeMillis()
         if (currentTime - lastFeed <= 30000) {
             sick = true
             result = false
@@ -160,7 +160,7 @@ class Pet (
     }
 
     fun walk(): Boolean {
-        var currentTime = System.currentTimeMillis()
+        val currentTime = System.currentTimeMillis()
         if (currentTime - lastWalk <= 30000) {
             return false
         }
@@ -171,7 +171,7 @@ class Pet (
     }
 
     fun play(): Boolean {
-        var currentTime = System.currentTimeMillis()
+        val currentTime = System.currentTimeMillis()
         if (currentTime - lastPlay <= 30000) {
             return false
         }
@@ -182,7 +182,7 @@ class Pet (
     }
 
     fun groom(): Boolean {
-        var currentTime = System.currentTimeMillis()
+        val currentTime = System.currentTimeMillis()
         if (currentTime - lastGroom <= 30000) {
             return false
         }
@@ -192,7 +192,7 @@ class Pet (
     }
 
     fun meds(): Boolean {
-        var currentTime = System.currentTimeMillis()
+        val currentTime = System.currentTimeMillis()
         if (currentTime - lastMed <= 60000) {
             return false
         }

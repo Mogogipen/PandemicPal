@@ -11,7 +11,6 @@ import android.os.Looper
 import android.widget.*
 import com.bumptech.glide.Glide
 
-@SuppressWarnings
 class PetPageActivity : AppCompatActivity() {
 
     private lateinit var pet: Pet
@@ -60,11 +59,11 @@ class PetPageActivity : AppCompatActivity() {
         happinessBars = arrayOf(R.drawable.empty, R.drawable.yellow_one_quarter, R.drawable.yellow_half, R.drawable.yellow_three_quarter, R.drawable.yellow_full)
 
         val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
-        var hasPet = sharedPreferences.getBoolean("hasPet", false)
+        val hasPet = sharedPreferences.getBoolean("hasPet", false)
         if (!hasPet) {
 
             // Init pet
-            var name = intent.getStringExtra("petName").toString()
+            val name = intent.getStringExtra("petName").toString()
             var type = intent.getSerializableExtra("pet")
             if (type == null) {
                 Toast.makeText(this, "Pet creation error", Toast.LENGTH_SHORT).show()
