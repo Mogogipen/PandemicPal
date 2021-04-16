@@ -94,15 +94,15 @@ class PetPageActivity : AppCompatActivity() {
             petAction(R.drawable.room_meadow)
         }
         playButton.setOnClickListener{
-            //TODO
+            backgroundImage.setImageResource(R.drawable.room_play)
             pet.play()
         }
         groomButton.setOnClickListener{
-            //TODO
+            backgroundImage.setImageResource(R.drawable.groom)
             pet.groom()
         }
         medsButton.setOnClickListener{
-            //TODO
+            backgroundImage.setImageResource(R.drawable.room_meds)
             pet.meds()
         }
         toiletButton.setOnClickListener{

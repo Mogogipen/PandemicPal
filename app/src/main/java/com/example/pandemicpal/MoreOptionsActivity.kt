@@ -20,8 +20,8 @@ class MoreOptionsActivity : AppCompatActivity() {
 
             val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
             var alert = AlertDialog.Builder(this)
-            alert.setTitle("Remove Pet")
-            alert.setMessage("Are you sure you want to remove your pet?")
+            alert.setTitle("Delete Pet")
+            alert.setMessage("Are you sure you want to do this? You cannot retrieve your pet afterwards.")
             alert.setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
                 sharedPreferences.edit().remove("hasPet").commit()
                 Toast.makeText(this, "Pet Removed", Toast.LENGTH_SHORT).show()
