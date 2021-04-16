@@ -3,6 +3,7 @@ package com.example.pandemicpal
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -15,9 +16,20 @@ class PetPageActivity : AppCompatActivity() {
 
     private lateinit var pet: Pet
 
-    private lateinit var healthStatusBarImage : ImageView
-    private lateinit var happinessStatusBarImage : ImageView
-    private lateinit var hungerStatusBarImage : ImageView
+    private lateinit var petName: TextView
+    private lateinit var backgroundImage: ImageView
+    private lateinit var petImage: ImageView
+    private lateinit var moreOptionsButton: ImageButton
+    private lateinit var feedButton: Button
+    private lateinit var walkButton: Button
+    private lateinit var playButton: Button
+    private lateinit var groomButton: Button
+    private lateinit var medsButton: Button
+    private lateinit var toiletButton: Button
+
+    private lateinit var healthStatusBarImage: ImageView
+    private lateinit var happinessStatusBarImage: ImageView
+    private lateinit var hungerStatusBarImage: ImageView
 
     private lateinit var heathBars : Array<Int>
     private lateinit var hungerBars : Array<Int>
@@ -27,21 +39,20 @@ class PetPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet_page)
 
-        var petName = findViewById<TextView>(R.id.petName)
-        var backgroundImage = findViewById<ImageView>(R.id.backgroundImage)
-        var petImage = findViewById<ImageView>(R.id.petImage)
-        var moreOptionsButton = findViewById<ImageButton>(R.id.moreOptionsButton)
-        var feedButton = findViewById<Button>(R.id.feedButton)
-        var walkButton = findViewById<Button>(R.id.walkButton)
-        var playButton = findViewById<Button>(R.id.playButton)
-        var groomButton = findViewById<Button>(R.id.groomButton)
-        var medsButton = findViewById<Button>(R.id.medsButton)
-        var toiletButton = findViewById<Button>(R.id.toiletButton)
+        petName = findViewById(R.id.petName)
+        backgroundImage = findViewById(R.id.backgroundImage)
+        petImage = findViewById(R.id.petImage)
+        moreOptionsButton = findViewById(R.id.moreOptionsButton)
+        feedButton = findViewById(R.id.feedButton)
+        walkButton = findViewById(R.id.walkButton)
+        playButton = findViewById(R.id.playButton)
+        groomButton = findViewById(R.id.groomButton)
+        medsButton = findViewById(R.id.medsButton)
+        toiletButton = findViewById(R.id.toiletButton)
 
-
-        healthStatusBarImage = findViewById<ImageView>(R.id.healthBarImage)
-        happinessStatusBarImage = findViewById<ImageView>(R.id.happinessBarImage)
-        hungerStatusBarImage = findViewById<ImageView>(R.id.hungerBarImage)
+        healthStatusBarImage = findViewById(R.id.healthBarImage)
+        happinessStatusBarImage = findViewById(R.id.happinessBarImage)
+        hungerStatusBarImage = findViewById(R.id.hungerBarImage)
 
 
         heathBars = arrayOf(R.drawable.empty, R.drawable.red_one_quarter, R.drawable.red_half, R.drawable.red_three_quarter, R.drawable.red_full)
@@ -49,7 +60,6 @@ class PetPageActivity : AppCompatActivity() {
         happinessBars = arrayOf(R.drawable.empty, R.drawable.yellow_one_quarter, R.drawable.yellow_half, R.drawable.yellow_three_quarter, R.drawable.yellow_full)
 
         val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
-
         var hasPet = sharedPreferences.getBoolean("hasPet", false)
         if (!hasPet) {
 
@@ -76,39 +86,47 @@ class PetPageActivity : AppCompatActivity() {
             startActivity(Intent(this, MoreOptionsActivity::class.java))
         }
         feedButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.room_kitchen)
-            feedButton.isEnabled = false
-            Handler(Looper.getMainLooper()).postDelayed({
-               backgroundImage.setImageResource(R.drawable.room_default)
-                feedButton.isEnabled = true
-            }, 2000)
+            pet.feed()
+            petAction(R.drawable.room_kitchen)
         }
         walkButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.room_meadow)
-            walkButton.isEnabled = false
-            Handler(Looper.getMainLooper()).postDelayed({
-                backgroundImage.setImageResource(R.drawable.room_default)
-                walkButton.isEnabled = true
-            }, 2000)
+            pet.walk()
+            petAction(R.drawable.room_meadow)
         }
         playButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.room_default)
+            //TODO
+            pet.play()
         }
         groomButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.room_default)
+            //TODO
+            pet.groom()
         }
         medsButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.room_default)
+            //TODO
+            pet.meds()
         }
         toiletButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.room_bath)
-            toiletButton.isEnabled = false
-            Handler(Looper.getMainLooper()).postDelayed({
-                backgroundImage.setImageResource(R.drawable.room_default)
-                toiletButton.isEnabled = true
-            }, 2000)
+            pet.toilet()
+            petAction(R.drawable.room_bath)
         }
 
+    }
+
+    /**
+     * Sets the background for the appropriate action and disables buttons.
+     * Then, after a short delay (5s), background is reset and buttons re-enabled.
+     */
+    private fun petAction(image: Int) {
+        backgroundImage.setImageResource(image)
+        feedButton.isEnabled = false
+        walkButton.isEnabled = false
+        playButton.isEnabled = false
+        groomButton.isEnabled = false
+        medsButton.isEnabled = false
+        toiletButton.isEnabled = false
+        Handler(Looper.getMainLooper()).postDelayed({
+            backgroundImage.setImageResource(R.drawable.room_default)
+        }, 5000)
     }
 
     private fun savePet() {
