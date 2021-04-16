@@ -72,11 +72,6 @@ class PetPageActivity : AppCompatActivity() {
         }
         medsButton.setOnClickListener{
             backgroundImage.setImageResource(R.drawable.room_default)
-            // Testing for status bars
-//            happinessStatusBarImage.setImageResource(R.drawable.yellow_half)
-//            hungerStatusBarImage.setImageResource(R.drawable.blue_half)
-//            healthStatusBarImage.setImageResource(R.drawable.red_half)
-
         }
         toiletButton.setOnClickListener{
             backgroundImage.setImageResource(R.drawable.room_bath)
