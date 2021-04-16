@@ -80,7 +80,10 @@ class PetPageActivity : AppCompatActivity() {
         } else {
             pet = Pet(this)
             loadValues(petName, petImage)
+
         }
+        //update GUI
+        updatePet()
 
         moreOptionsButton.setOnClickListener{
             startActivity(Intent(this, MoreOptionsActivity::class.java))
@@ -94,15 +97,15 @@ class PetPageActivity : AppCompatActivity() {
             petAction(R.drawable.room_meadow)
         }
         playButton.setOnClickListener{
-            //TODO
+            backgroundImage.setImageResource(R.drawable.room_play)
             pet.play()
         }
         groomButton.setOnClickListener{
-            //TODO
+            backgroundImage.setImageResource(R.drawable.groom)
             pet.groom()
         }
         medsButton.setOnClickListener{
-            //TODO
+            backgroundImage.setImageResource(R.drawable.room_meds)
             pet.meds()
         }
         toiletButton.setOnClickListener{
@@ -181,7 +184,7 @@ class PetPageActivity : AppCompatActivity() {
 
         if(pet.getHealth() <= 0){
             // start dead activity
-
+            startActivity(Intent(this, PetDeadActivity::class.java))
         }
     }
 
