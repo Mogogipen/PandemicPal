@@ -126,6 +126,13 @@ class PetPageActivity : AppCompatActivity() {
         toiletButton.isEnabled = false
         Handler(Looper.getMainLooper()).postDelayed({
             backgroundImage.setImageResource(R.drawable.room_default)
+            feedButton.isEnabled = true
+            walkButton.isEnabled = true
+            playButton.isEnabled = true
+            groomButton.isEnabled = true
+            medsButton.isEnabled = true
+            toiletButton.isEnabled = true
+            updatePet()
         }, 5000)
     }
 
