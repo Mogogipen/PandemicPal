@@ -112,4 +112,8 @@ class PetPageActivity : AppCompatActivity() {
                 .into(iv)
     }
 
+    private fun updatePet() {
+        
+    }
+
 }
