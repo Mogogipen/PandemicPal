@@ -34,6 +34,7 @@ class PetPageActivity : AppCompatActivity() {
         // TODO Init pet object
         petName.setText(intent.getStringExtra("petName").toString())
         var petType = intent.getSerializableExtra("pet")
+        val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.apply{
             putBoolean("hasPet", true)

@@ -49,7 +49,6 @@ class PetSetupNameActivity : AppCompatActivity() {
         var intent = Intent(this, PetPageActivity::class.java)
         intent.putExtra("pet", pet)
         intent.putExtra("petName", petName)
-        val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
         finish()
         startActivity(intent)
     }
