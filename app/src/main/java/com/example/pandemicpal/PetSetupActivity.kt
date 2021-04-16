@@ -96,5 +96,6 @@ class PetSetupActivity : AppCompatActivity() {
         var intent = Intent(this, PetSetupNameActivity::class.java)
         intent.putExtra("pet", type)
         startActivity(intent)
+        finish()
     }
 }

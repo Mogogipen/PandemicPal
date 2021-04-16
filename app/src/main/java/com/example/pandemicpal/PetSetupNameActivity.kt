@@ -49,14 +49,8 @@ class PetSetupNameActivity : AppCompatActivity() {
         var intent = Intent(this, PetPageActivity::class.java)
         intent.putExtra("pet", pet)
         intent.putExtra("petName", petName)
-        startActivity(intent)
         val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
-
-        // Set the "hasPet" data to true
-        // TODO maybe we should do this in PetPageActivity so it won't set the hasPet to true if pet creation fails
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.apply{
-            putBoolean("hasPet", true)
-        }.apply()
+        finish()
+        startActivity(intent)
     }
 }

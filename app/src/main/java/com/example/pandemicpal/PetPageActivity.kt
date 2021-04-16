@@ -1,6 +1,7 @@
 package com.example.pandemicpal
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -30,8 +31,13 @@ class PetPageActivity : AppCompatActivity() {
         var hungerStatusBarImage = findViewById<ImageView>(R.id.hungerBarImage)
 
 
+        // TODO Init pet object
         petName.setText(intent.getStringExtra("petName").toString())
         var petType = intent.getSerializableExtra("pet")
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.apply{
+            putBoolean("hasPet", true)
+        }.apply()
         if (petType == null);
         else {
             petType = petType as PETS
