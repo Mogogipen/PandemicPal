@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PandemicPal">
-        <activity android:name=".PetSetupNameActivity"></activity>
+        <activity android:name=".PetDeadActivity"></activity>
+        <activity android:name=".PetSetupNameActivity" />
         <activity android:name=".PetSetupActivity" />
-        <activity android:name=".MoreOptionsActivity"></activity>
+        <activity android:name=".MoreOptionsActivity" />
         <activity android:name=".PetPageActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
