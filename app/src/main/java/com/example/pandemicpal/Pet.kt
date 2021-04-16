@@ -129,15 +129,12 @@ class Pet (
     }
 
     fun feed() {
-        TODO("Not yet implemented")
     }
 
     fun walk() {
-        TODO("Not yet implemented")
     }
 
     fun play() {
-        TODO("Not yet implemented")
     }
 
     fun groom() {
@@ -147,7 +144,6 @@ class Pet (
     }
 
     fun toilet() {
-        TODO("Not yet implemented")
     }
 
 }
