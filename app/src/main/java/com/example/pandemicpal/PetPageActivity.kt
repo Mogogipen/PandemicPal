@@ -66,13 +66,13 @@ class PetPageActivity : AppCompatActivity() {
             }, 2000)
         }
         playButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.room_default)
+            backgroundImage.setImageResource(R.drawable.room_play)
         }
         groomButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.room_default)
+            backgroundImage.setImageResource(R.drawable.groom)
         }
         medsButton.setOnClickListener{
-            backgroundImage.setImageResource(R.drawable.room_default)
+            backgroundImage.setImageResource(R.drawable.room_meds)
         }
         toiletButton.setOnClickListener{
             backgroundImage.setImageResource(R.drawable.room_bath)
