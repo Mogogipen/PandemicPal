@@ -48,12 +48,10 @@ class Pet (
         for (i in 0..loopCount) {
             increaseHunger(10)
             decreaseHappiness(10)
-            if (hunger == 100) {
+            if (hunger == 100 || happiness == 0) {
                 decreaseHealth(10)
             }
         }
-
-        Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
 
     }
 
@@ -128,7 +126,30 @@ class Pet (
             putBoolean("bathroom", bathroom)
             putBoolean("dead", dead)
         }.apply()
-        Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
+    }
+
+    fun feed() {
+        TODO("Not yet implemented")
+    }
+
+    fun walk() {
+        TODO("Not yet implemented")
+    }
+
+    fun play() {
+        TODO("Not yet implemented")
+    }
+
+    fun groom() {
+        TODO("Not yet implemented")
+    }
+
+    fun meds() {
+        TODO("Not yet implemented")
+    }
+
+    fun toilet() {
+        TODO("Not yet implemented")
     }
 
 }
