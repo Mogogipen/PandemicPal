@@ -45,7 +45,7 @@ class Pet (
             var rand = Random(timePassed)
             bathroom = rand.nextBoolean()
         }
-        for (i in 0..loopCount) {
+        for (i in 1..loopCount) {
             increaseHunger(10)
             decreaseHappiness(10)
             if (hunger == 100 || happiness == 0) {
