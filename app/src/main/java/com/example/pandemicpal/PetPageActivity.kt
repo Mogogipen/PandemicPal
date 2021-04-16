@@ -9,8 +9,11 @@ import android.os.Looper
 import android.widget.*
 import com.bumptech.glide.Glide
 
-
+@SuppressWarnings
 class PetPageActivity : AppCompatActivity() {
+
+    private lateinit var pet: Pet
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet_page)
@@ -30,22 +33,30 @@ class PetPageActivity : AppCompatActivity() {
         var happinessStatusBarImage = findViewById<ImageView>(R.id.happinessBarImage)
         var hungerStatusBarImage = findViewById<ImageView>(R.id.hungerBarImage)
 
-
-        // TODO Init pet object
-        petName.setText(intent.getStringExtra("petName").toString())
-        var petType = intent.getSerializableExtra("pet")
         val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.apply{
-            putBoolean("hasPet", true)
-        }.apply()
-        if (petType == null);
-        else {
-            petType = petType as PETS
-            Glide.with(this)
-                    .load(petType.image)
-                    .into(petImage)
+
+        var hasPet = sharedPreferences.getBoolean("hasPet", false)
+        if (!hasPet) {
+
+            // Init pet
+            var name = intent.getStringExtra("petName").toString()
+            var type = intent.getSerializableExtra("pet")
+            if (type == null) {
+                Toast.makeText(this, "Pet creation error", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            type = type as PETS
+            pet = Pet(name, type)
+
+            // Load values and save pet
+            loadValues(petName, petImage)
+            savePet()
+
+        } else {
+            pet = Pet(this)
+            loadValues(petName, petImage)
         }
+
         moreOptionsButton.setOnClickListener{
             startActivity(Intent(this, MoreOptionsActivity::class.java))
         }
@@ -85,5 +96,20 @@ class PetPageActivity : AppCompatActivity() {
 
     }
 
+    private fun savePet() {
+        pet.save(this)
+        val sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.apply{
+            putBoolean("hasPet", true)
+        }.apply()
+    }
+
+    private fun loadValues(tv :TextView, iv: ImageView) {
+        tv.setText(pet.getName())
+        Glide.with(this)
+                .load(pet.getType().image)
+                .into(iv)
+    }
 
 }

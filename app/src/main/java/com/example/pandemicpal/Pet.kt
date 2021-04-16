@@ -2,6 +2,7 @@ package com.example.pandemicpal
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.widget.Toast
 import java.util.*
 import kotlin.math.pow
 
@@ -21,7 +22,7 @@ class Pet (
     constructor(context: Context) : this("", PETS.Dog) {
         // Load values from device
         val sharedPreferences = context.getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
-        name = sharedPreferences.getString("name", "")!!
+        name = sharedPreferences.getString("name", "<test>")!!
         type = PETS.valueOf(sharedPreferences.getString("type", "Dog")!!)
         health = sharedPreferences.getInt("health", 0)
         hunger = sharedPreferences.getInt("hunger", 100)
@@ -34,7 +35,7 @@ class Pet (
         //  2 hrs = 7x10^6 milliseconds
         val time = sharedPreferences.getLong("timeStamp", Long.MIN_VALUE)
         val timePassed = System.currentTimeMillis() - time
-        var timeInterval : Long = (7.2 * 10.0.pow(6.0)) as Long
+        var timeInterval : Long = (7.2 * 10.0.pow(6.0)).toLong()
         var loopCount = timePassed/timeInterval
 
         // Simulate passage of time
@@ -52,6 +53,8 @@ class Pet (
             }
         }
 
+        Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
+
     }
 
     fun getName() : String {return this.name}
@@ -68,15 +71,15 @@ class Pet (
             this.health += healthMod
     }
     fun decreaseHealth(healthMod:Int) {
-        if((healthMod * type.healthMod) as Int >= this.health)
+        if((healthMod * type.healthMod).toInt() >= this.health)
             dead = true
         else
-            this.health -= (healthMod*type.healthMod) as Int
+            this.health -= (healthMod*type.healthMod).toInt()
     }
 
     fun getHunger() : Int {return this.hunger}
     fun increaseHunger(hungerMod:Int) {
-        if((hungerMod * type.hungerMod) as Int + this.hunger > 100)
+        if((hungerMod * type.hungerMod).toInt() + this.hunger > 100)
             this.hunger = 100
         else
             this.hunger += hungerMod
@@ -96,10 +99,10 @@ class Pet (
             this.happiness += happinessMod
     }
     fun decreaseHappiness(happinessMod:Int) {
-        if((happinessMod * type.happinessMod) as Int >= this.happiness)
+        if((happinessMod * type.happinessMod).toInt() >= this.happiness)
             this.happiness = 0
         else
-            this.happiness -= (happinessMod * type.happinessMod) as Int
+            this.happiness -= (happinessMod * type.happinessMod).toInt()
     }
 
     fun getBathroom() : Boolean {return this.bathroom}
@@ -119,12 +122,13 @@ class Pet (
             putString("name", name)
             putString("type", type.name)
             putInt("health", health)
-            putInt("happiness", happiness)
             putInt("hunger", hunger)
+            putInt("happiness", happiness)
             putBoolean("sick", sick)
             putBoolean("bathroom", bathroom)
             putBoolean("dead", dead)
-        }
+        }.apply()
+        Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
     }
 
 }

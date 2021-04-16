@@ -25,10 +25,10 @@ class MainActivity : AppCompatActivity() {
         var startButton = findViewById<Button>(R.id.startButton)
         // have some kind of code here to check if a pet is present
         val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
-        val hasPet : Boolean? = sharedPreferences.getBoolean("hasPet", false)
 
         startButton.setOnClickListener {
 
+            val hasPet : Boolean? = sharedPreferences.getBoolean("hasPet", false)
             if (hasPet == true){
                 startActivity(Intent(this,PetPageActivity::class.java))
             }else{
