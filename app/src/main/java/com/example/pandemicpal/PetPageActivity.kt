@@ -1,5 +1,6 @@
 package com.example.pandemicpal
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,14 @@ import com.bumptech.glide.Glide
 class PetPageActivity : AppCompatActivity() {
 
     private lateinit var pet: Pet
+
+    private lateinit var healthStatusBarImage : ImageView
+    private lateinit var happinessStatusBarImage : ImageView
+    private lateinit var hungerStatusBarImage : ImageView
+
+    private lateinit var heathBars : Array<Int>
+    private lateinit var hungerBars : Array<Int>
+    private lateinit var happinessBars : Array<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +38,15 @@ class PetPageActivity : AppCompatActivity() {
         var medsButton = findViewById<Button>(R.id.medsButton)
         var toiletButton = findViewById<Button>(R.id.toiletButton)
 
-        var healthStatusBarImage = findViewById<ImageView>(R.id.healthBarImage)
-        var happinessStatusBarImage = findViewById<ImageView>(R.id.happinessBarImage)
-        var hungerStatusBarImage = findViewById<ImageView>(R.id.hungerBarImage)
+
+        healthStatusBarImage = findViewById<ImageView>(R.id.healthBarImage)
+        happinessStatusBarImage = findViewById<ImageView>(R.id.happinessBarImage)
+        hungerStatusBarImage = findViewById<ImageView>(R.id.hungerBarImage)
+
+
+        heathBars = arrayOf(R.drawable.empty, R.drawable.red_one_quarter, R.drawable.red_half, R.drawable.red_three_quarter, R.drawable.red_full)
+        hungerBars = arrayOf(R.drawable.empty, R.drawable.blue_one_quarter, R.drawable.blue_half, R.drawable.blue_three_quarters, R.drawable.blue_full)
+        happinessBars = arrayOf(R.drawable.empty, R.drawable.yellow_one_quarter, R.drawable.yellow_half, R.drawable.yellow_three_quarter, R.drawable.yellow_full)
 
         val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
 
@@ -113,7 +128,36 @@ class PetPageActivity : AppCompatActivity() {
     }
 
     private fun updatePet() {
-        
+        // TO DO:
+        // make a switch statement that
+        when(pet.getHealth()){
+            in 1..25 -> healthStatusBarImage.setImageResource(heathBars[1])
+            in 26..50 -> healthStatusBarImage.setImageResource(heathBars[2])
+            in 51..75 -> healthStatusBarImage.setImageResource(heathBars[3])
+            in 76..100 -> healthStatusBarImage.setImageResource(heathBars[4])
+            else -> healthStatusBarImage.setImageResource(heathBars[0])
+        }
+
+        when(pet.getHunger()){
+            in 1..25 -> hungerStatusBarImage.setImageResource(hungerBars[1])
+            in 26..50 -> hungerStatusBarImage.setImageResource(hungerBars[2])
+            in 51..75 -> hungerStatusBarImage.setImageResource(hungerBars[3])
+            in 76..100 -> hungerStatusBarImage.setImageResource(hungerBars[4])
+            else -> hungerStatusBarImage.setImageResource(hungerBars[0])
+        }
+
+        when(pet.getHappiness()){
+            in 1..25 ->happinessStatusBarImage.setImageResource(happinessBars[1])
+            in 26..50 -> happinessStatusBarImage.setImageResource(happinessBars[2])
+            in 51..75 -> happinessStatusBarImage.setImageResource(happinessBars[3])
+            in 76..100 -> happinessStatusBarImage.setImageResource(happinessBars[4])
+            else -> happinessStatusBarImage.setImageResource(happinessBars[0])
+        }
+
+        if(pet.getHealth() <= 0){
+            // start dead activity
+
+        }
     }
 
 }
