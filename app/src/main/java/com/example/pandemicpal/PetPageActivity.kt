@@ -80,7 +80,10 @@ class PetPageActivity : AppCompatActivity() {
         } else {
             pet = Pet(this)
             loadValues(petName, petImage)
+
         }
+        //update GUI
+        updatePet()
 
         moreOptionsButton.setOnClickListener{
             startActivity(Intent(this, MoreOptionsActivity::class.java))
@@ -181,7 +184,7 @@ class PetPageActivity : AppCompatActivity() {
 
         if(pet.getHealth() <= 0){
             // start dead activity
-            startActivity(Intent(this, PetPageActivity::class.java))
+            startActivity(Intent(this, PetDeadActivity::class.java))
         }
     }
 
