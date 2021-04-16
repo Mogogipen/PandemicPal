@@ -141,11 +141,9 @@ class Pet (
     }
 
     fun groom() {
-        TODO("Not yet implemented")
     }
 
     fun meds() {
-        TODO("Not yet implemented")
     }
 
     fun toilet() {
