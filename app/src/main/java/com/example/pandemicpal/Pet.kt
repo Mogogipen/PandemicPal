@@ -16,6 +16,12 @@ class Pet (
     private var dead = false
     private var sick = false
 
+    private var lastFeed:Long = 0
+    private var lastGroom:Long = 0
+    private var lastWalk:Long = 0
+    private var lastPlay:Long = 0
+    private var lastMed:Long = 0
+
     /**
      * Use this constructor to load the pet from the device
      */
@@ -128,28 +134,81 @@ class Pet (
         }.apply()
     }
 
-    fun feed() {
-        TODO("Not yet implemented")
+
+
+    //
+    // Pet actions
+    //
+
+    private fun petUpdate() {
+        // decrease hunger overtime
+        // decrease health overtime?
+        // decrease happiness overtime
+        // check for bathroom
     }
 
-    fun walk() {
-        TODO("Not yet implemented")
+    fun feed(): Boolean {
+        var result = true
+        decreaseHunger(10)
+        var currentTime = System.currentTimeMillis()
+        if (currentTime - lastFeed <= 30000) {
+            sick = true
+            result = false
+        }
+        lastFeed = currentTime
+        return result
     }
 
-    fun play() {
-        TODO("Not yet implemented")
+    fun walk(): Boolean {
+        var currentTime = System.currentTimeMillis()
+        if (currentTime - lastWalk <= 30000) {
+            return false
+        }
+        increaseHunger(10)
+        increaseHealth(10)
+        lastWalk = currentTime
+        return true
     }
 
-    fun groom() {
-        TODO("Not yet implemented")
+    fun play(): Boolean {
+        var currentTime = System.currentTimeMillis()
+        if (currentTime - lastPlay <= 30000) {
+            return false
+        }
+        increaseHealth(10)
+        increaseHappiness(10)
+        lastPlay = currentTime
+        return true
     }
 
-    fun meds() {
-        TODO("Not yet implemented")
+    fun groom(): Boolean {
+        var currentTime = System.currentTimeMillis()
+        if (currentTime - lastGroom <= 30000) {
+            return false
+        }
+        increaseHappiness(10)
+        lastGroom = currentTime
+        return true
     }
 
-    fun toilet() {
-        TODO("Not yet implemented")
+    fun meds(): Boolean {
+        var currentTime = System.currentTimeMillis()
+        if (currentTime - lastMed <= 60000) {
+            return false
+        }
+        increaseHealth(10)
+        sick = false
+        return true
+    }
+
+    fun toilet(): Boolean {
+        if (canToilet()) {
+            bathroom = false
+        }
+    }
+
+    fun canToilet(): Boolean {
+        return true
     }
 
 }
