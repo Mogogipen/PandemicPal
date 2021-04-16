@@ -181,7 +181,7 @@ class PetPageActivity : AppCompatActivity() {
 
         if(pet.getHealth() <= 0){
             // start dead activity
-
+            startActivity(Intent(this, PetPageActivity::class.java))
         }
     }
 
