@@ -6,10 +6,8 @@ import java.util.*
 import kotlin.math.pow
 
 class Pet (
-    name:String, type:PETS, health:Int, hunger:Int, happiness:Int, bathroom:Boolean
+    private var name:String, private var type:PETS
 ) {
-    private lateinit var name : String
-    private lateinit var type : PETS
     private var health = 100
     private var hunger = 0
     private var happiness = 100
@@ -20,7 +18,7 @@ class Pet (
     /**
      * Use this constructor to load the pet from the device
      */
-    constructor(context: Context) : this("", PETS.Dog, 0, 0, 0, false) {
+    constructor(context: Context) : this("", PETS.Dog) {
         // Load values from device
         val sharedPreferences = context.getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
         name = sharedPreferences.getString("name", "")!!
