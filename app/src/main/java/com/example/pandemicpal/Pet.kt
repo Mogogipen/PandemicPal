@@ -204,7 +204,9 @@ class Pet (
     fun toilet(): Boolean {
         if (canToilet()) {
             bathroom = false
+            return true
         }
+        return false
     }
 
     fun canToilet(): Boolean {
