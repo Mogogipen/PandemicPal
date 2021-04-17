@@ -190,14 +190,14 @@ class Pet (
         }
 
         // Simulate toilet
-        if (time - toiletTime >= timeInterval*3) {
+        if (time - toiletTime >= timeInterval) {
             bathroom = true
         } else if (time - toiletTime >= timeInterval/2) {
             bathroom = kotlin.random.Random.nextBoolean()
         }
         if (time - toiletTime >= timeInterval) {
             var toiletCount = ((time - toiletTime)/timeInterval).toInt()
-            decreaseHappiness(10 * toiletCount)
+            decreaseHealth(10 * toiletCount)
             decreaseHappiness(10 * toiletCount)
             toiletTime = time
         }
