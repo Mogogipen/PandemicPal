@@ -210,7 +210,7 @@ class PetPageActivity : AppCompatActivity() {
         if (pet.getBathroom()) {
             var alert = AlertDialog.Builder(this)
             alert.setTitle("Toilet")
-            alert.setTitle("Your pet is needs to use the toilet, hurry!")
+            alert.setTitle("Your pet needs to use the toilet, hurry!")
             alert.setNeutralButton("OK") {_: DialogInterface, _: Int ->}
             alert.show()
         }
