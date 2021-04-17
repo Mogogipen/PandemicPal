@@ -197,9 +197,11 @@ class Pet (
         }
         if (time - toiletTime >= timeInterval) {
             var toiletCount = ((time - toiletTime)/timeInterval).toInt()
-            decreaseHealth(10 * toiletCount)
-            decreaseHappiness(10 * toiletCount)
-            toiletTime = time
+            if (bathroom) {
+                decreaseHealth(10 * toiletCount)
+                decreaseHappiness(10 * toiletCount)
+                toiletTime = time
+            }
         }
     }
 
