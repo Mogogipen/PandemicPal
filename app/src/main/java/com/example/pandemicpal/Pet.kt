@@ -87,8 +87,10 @@ class Pet (
             this.health += healthMod
     }
     private fun decreaseHealth(healthMod:Int) {
-        if((healthMod * type.healthMod).toInt() >= this.health)
+        if((healthMod * type.healthMod).toInt() >= this.health) {
             dead = true
+            this.health = 0
+        }
         else
             this.health -= (healthMod*type.healthMod).toInt()
     }
@@ -126,6 +128,8 @@ class Pet (
 
     fun getSick() : Boolean {return this.sick}
     fun setSick(bathroom:Boolean) {this.sick = sick}
+
+    fun isDead() : Boolean {return this.dead}
 
     /**
      * Saves all pet data to the device as well as a time stamp
@@ -247,7 +251,6 @@ class Pet (
             return false
         }
         increaseHappiness(10)
-        decreaseHealth(10) //TODO TMP
         lastGroom = currentTime
         happyTime = currentTime
         return true

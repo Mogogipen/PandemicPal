@@ -184,7 +184,7 @@ class PetPageActivity : AppCompatActivity() {
             else -> happinessStatusBarImage.setImageResource(happinessBars[0])
         }
 
-        if(pet.getHealth() <= 0){
+        if(pet.getHealth() <= 0 || pet.isDead()){
             // start dead activity
             startActivity(Intent(this, PetDeadActivity::class.java))
         }
