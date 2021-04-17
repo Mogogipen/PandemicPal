@@ -24,26 +24,41 @@
         android:layout_height="554dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.514"
+        app:layout_constraintVertical_bias="0.361"
         app:srcCompat="@drawable/tombstone" />
 
     <TextView
         android:id="@+id/petIsDeadLabel"
-        android:layout_width="222dp"
-        android:layout_height="339dp"
+        android:layout_width="210dp"
+        android:layout_height="93dp"
         android:fontFamily="@font/press_start_2p"
         android:gravity="center"
-        android:text="Your Pet has Passed on    ..."
+        android:text="Here Lies"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.624"
+        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469" />
+        app:layout_constraintVertical_bias="0.407" />
+
+    <TextView
+        android:id="@+id/petNameLabel"
+        android:layout_width="281dp"
+        android:layout_height="105dp"
+        android:fontFamily="@font/press_start_2p"
+        android:gravity="center"
+        android:text="WWWWWWWWWW"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.661"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.517" />
 
     <Button
         android:id="@+id/petDeadButton"
