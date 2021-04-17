@@ -156,21 +156,21 @@ class Pet (
     // Pet actions
     //
 
-    fun petUpdate() {
+    fun update() {
         // Calculate new values from time passed
         val time = System.currentTimeMillis()
         var timeInterval : Long = (60000).toLong() // 1 min
 
         // Simulate hunger
         if (time - hungerTime >= timeInterval) {
-            var hungerCount = ((time - hungerTime)/timeInterval) as Int
+            var hungerCount = ((time - hungerTime)/timeInterval).toInt()
             increaseHunger(10 * hungerCount)
             hungerTime = time
         }
 
         // Simulate happiness
         if (time - happyTime >= timeInterval) {
-            var happyCount = ((time - happyTime)/timeInterval) as Int
+            var happyCount = ((time - happyTime)/timeInterval).toInt()
             decreaseHappiness(10 * happyCount)
             happyTime = time
         }
@@ -179,7 +179,7 @@ class Pet (
 
         // Simulate health
         if (time - healthTime >= timeInterval && (hunger >= 100 || sick)) {
-            var healthCount = ((time - healthTime)/timeInterval) as Int
+            var healthCount = ((time - healthTime)/timeInterval).toInt()
             var hungry = hunger >= 100
             if (sick && hungry) {
                 increaseHunger(20 * healthCount)
@@ -196,7 +196,7 @@ class Pet (
             bathroom = kotlin.random.Random.nextBoolean()
         }
         if (time - toiletTime >= timeInterval) {
-            var toiletCount = ((time - toiletTime)/timeInterval) as Int
+            var toiletCount = ((time - toiletTime)/timeInterval).toInt()
             decreaseHappiness(10 * toiletCount)
             decreaseHappiness(10 * toiletCount)
             toiletTime = time
@@ -206,7 +206,7 @@ class Pet (
     fun feed(): Boolean {
         if (sick)
             decreaseHealth(10)
-        petUpdate()
+        update()
         var result = true
         decreaseHunger(10)
         val currentTime = System.currentTimeMillis()
@@ -222,7 +222,7 @@ class Pet (
     fun walk(): Boolean {
         if (sick)
             decreaseHealth(10)
-        petUpdate()
+        update()
         val currentTime = System.currentTimeMillis()
         if (currentTime - lastWalk <= 30000) {
             return false
@@ -238,7 +238,7 @@ class Pet (
     fun play(): Boolean {
         if (sick)
             decreaseHealth(10)
-        petUpdate()
+        update()
         val currentTime = System.currentTimeMillis()
         if (currentTime - lastPlay <= 30000) {
             return false
@@ -254,7 +254,7 @@ class Pet (
     fun groom(): Boolean {
         if (sick)
             decreaseHealth(10)
-        petUpdate()
+        update()
         val currentTime = System.currentTimeMillis()
         if (currentTime - lastGroom <= 30000) {
             return false
@@ -266,7 +266,7 @@ class Pet (
     }
 
     fun meds(): Boolean {
-        petUpdate()
+        update()
         val currentTime = System.currentTimeMillis()
         if (currentTime - lastMed <= 60000) {
             decreaseHappiness(10)
@@ -283,7 +283,7 @@ class Pet (
     }
 
     fun toilet(): Boolean {
-        petUpdate()
+        update()
         if (bathroom) {
             bathroom = false
             toiletTime = System.currentTimeMillis()
