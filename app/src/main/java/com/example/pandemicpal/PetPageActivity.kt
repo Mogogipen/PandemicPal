@@ -207,14 +207,6 @@ class PetPageActivity : AppCompatActivity() {
             startActivity(Intent(this, PetDeadActivity::class.java))
         }
 
-        if (pet.getBathroom()) {
-            var alert = AlertDialog.Builder(this)
-            alert.setTitle("Toilet")
-            alert.setTitle("Your pet needs to use the toilet, hurry!")
-            alert.setNeutralButton("OK") {_: DialogInterface, _: Int ->}
-            alert.show()
-        }
-
         if(pet.getHealth() <= 0 || pet.isDead()){
             // start dead activity
             startActivity(Intent(this, PetDeadActivity::class.java))

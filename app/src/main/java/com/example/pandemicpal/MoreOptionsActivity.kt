@@ -24,7 +24,6 @@ class MoreOptionsActivity : AppCompatActivity() {
             alert.setMessage("Are you sure you want to do this? You cannot retrieve your pet afterwards.")
             alert.setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
                 sharedPreferences.edit().remove("hasPet").commit()
-                Toast.makeText(this, "Pet Removed", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
             }
             alert.setNegativeButton("No"){ dialogInterface: DialogInterface, i: Int ->}
