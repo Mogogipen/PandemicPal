@@ -1,11 +1,8 @@
 package com.example.pandemicpal
 
-import android.app.Dialog
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -88,7 +85,7 @@ class PetPageActivity : AppCompatActivity() {
 
         }
         //update GUI
-        updatePet()
+        updateGUI()
 
         moreOptionsButton.setOnClickListener{
             startActivity(Intent(this, MoreOptionsActivity::class.java))
@@ -140,7 +137,7 @@ class PetPageActivity : AppCompatActivity() {
             groomButton.isEnabled = true
             medsButton.isEnabled = true
             toiletButton.isEnabled = true
-            updatePet()
+            updateGUI()
         }, 5000)
     }
 
@@ -163,13 +160,14 @@ class PetPageActivity : AppCompatActivity() {
     /**
      * Update pet values in the GUI (no values are changed in pet)
      */
-    private fun updatePet() {
+    private fun updateGUI() {
+        // Update and save pet
+        pet.update()
+        pet.save(this)
+
         var sick = pet.getSick()
         var toilet = pet.getBathroom()
 
-        // Update and save pet
-        pet.petUpdate()
-        pet.save(this)
 
         when(pet.getHealth()){
             in 1..25 -> healthStatusBarImage.setImageResource(heathBars[1])
@@ -223,6 +221,6 @@ class PetPageActivity : AppCompatActivity() {
 
     override fun onRestart() {
         super.onRestart()
-        updatePet()
+        updateGUI()
     }
 }
