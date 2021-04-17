@@ -1,6 +1,8 @@
 package com.example.pandemicpal
 
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.media.Image
@@ -9,6 +11,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 
 @SuppressWarnings
@@ -156,8 +159,8 @@ class PetPageActivity : AppCompatActivity() {
     }
 
     private fun updatePet() {
-        // TO DO:
-        // make a switch statement that
+        pet.petUpdate()
+
         when(pet.getHealth()){
             in 1..25 -> healthStatusBarImage.setImageResource(heathBars[1])
             in 26..50 -> healthStatusBarImage.setImageResource(heathBars[2])
@@ -185,6 +188,14 @@ class PetPageActivity : AppCompatActivity() {
         if(pet.getHealth() <= 0){
             // start dead activity
             startActivity(Intent(this, PetDeadActivity::class.java))
+        }
+
+        if (pet.getBathroom()) {
+            var alert = AlertDialog.Builder(this)
+            alert.setTitle("Toilet")
+            alert.setTitle("Your pet is needs to use the toilet, hurry!")
+            alert.setNeutralButton("OK") {_: DialogInterface, _: Int ->}
+            alert.show()
         }
     }
 
