@@ -37,6 +37,8 @@ class PetPageActivity : AppCompatActivity() {
     private lateinit var hungerBars : Array<Int>
     private lateinit var happinessBars : Array<Int>
 
+    private lateinit var sickImage: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pet_page)
@@ -56,10 +58,11 @@ class PetPageActivity : AppCompatActivity() {
         happinessStatusBarImage = findViewById(R.id.happinessBarImage)
         hungerStatusBarImage = findViewById(R.id.hungerBarImage)
 
-
         heathBars = arrayOf(R.drawable.empty, R.drawable.red_one_quarter, R.drawable.red_half, R.drawable.red_three_quarter, R.drawable.red_full)
         hungerBars = arrayOf(R.drawable.empty, R.drawable.blue_one_quarter, R.drawable.blue_half, R.drawable.blue_three_quarters, R.drawable.blue_full)
         happinessBars = arrayOf(R.drawable.empty, R.drawable.yellow_one_quarter, R.drawable.yellow_half, R.drawable.yellow_three_quarter, R.drawable.yellow_full)
+
+        sickImage = findViewById(R.id.sickView)
 
         val sharedPreferences : SharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
         val hasPet = sharedPreferences.getBoolean("hasPet", false)
@@ -161,6 +164,9 @@ class PetPageActivity : AppCompatActivity() {
      * Update pet values in the GUI (no values are changed in pet)
      */
     private fun updatePet() {
+        var sick = pet.getSick()
+        var toilet = pet.getBathroom()
+
         // Update and save pet
         pet.petUpdate()
         pet.save(this)
@@ -189,6 +195,18 @@ class PetPageActivity : AppCompatActivity() {
             else -> happinessStatusBarImage.setImageResource(happinessBars[0])
         }
 
+        when {
+            (sick && !toilet) -> sickImage.setImageResource(R.drawable.sick)
+            (!sick && toilet) -> sickImage.setImageResource(R.drawable.toilet_paper)
+            (sick && toilet) -> sickImage.setImageResource(R.drawable.toilet_and_sick)
+            (!sick && !toilet) -> sickImage.setImageResource(R.drawable.empty)
+        }
+
+        if(pet.getHealth() <= 0 || pet.isDead()){
+            // start dead activity
+            startActivity(Intent(this, PetDeadActivity::class.java))
+        }
+
         if (pet.getBathroom()) {
             var alert = AlertDialog.Builder(this)
             alert.setTitle("Toilet")
@@ -207,5 +225,4 @@ class PetPageActivity : AppCompatActivity() {
         super.onRestart()
         updatePet()
     }
-
 }
