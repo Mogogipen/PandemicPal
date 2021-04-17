@@ -12,7 +12,7 @@ class PetDeadActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pet_dead)
 
 
-        var deadButton = findViewById<Button>(R.id.petDeadButton)
+        val deadButton = findViewById<Button>(R.id.petDeadButton)
 
         deadButton.setOnClickListener {
             val sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE)

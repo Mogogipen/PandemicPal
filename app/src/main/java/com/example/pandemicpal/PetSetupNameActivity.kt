@@ -16,12 +16,12 @@ class PetSetupNameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pet_setup_name)
 
         // Load data from intent
-        var type = intent.getSerializableExtra("pet") as PETS
+        val type = intent.getSerializableExtra("pet") as PETS
 
         // Get all views
-        var nameField = findViewById<EditText>(R.id.editTextPetName)
-        var btnSelect = findViewById<Button>(R.id.btnSelectName)
-        var petImage = findViewById<ImageView>(R.id.imageView)
+        val nameField = findViewById<EditText>(R.id.editTextPetName)
+        val btnSelect = findViewById<Button>(R.id.btnSelectName)
+        val petImage = findViewById<ImageView>(R.id.imageView)
 
         // Set image to animated pet gif
         Glide.with(this)
@@ -31,7 +31,7 @@ class PetSetupNameActivity : AppCompatActivity() {
         // Set onClickListener to name the pet, pass data to intent, and start PetPageActivity
         btnSelect.setOnClickListener {
             // Check for valid name
-            var petName = nameField.text.toString()
+            val petName = nameField.text.toString()
             if (petName.isEmpty()) {
                 Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show()
             } else if(petName.length > 10) {
@@ -46,7 +46,7 @@ class PetSetupNameActivity : AppCompatActivity() {
     private fun selectPetName(pet: PETS, petName: String) {
 
         // If name is valid, pass data and load the next activity
-        var intent = Intent(this, PetPageActivity::class.java)
+        val intent = Intent(this, PetPageActivity::class.java)
         intent.putExtra("pet", pet)
         intent.putExtra("petName", petName)
         finish()
