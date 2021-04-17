@@ -7,9 +7,9 @@ import kotlin.math.pow
 class Pet (
     private var name:String, private var type:PETS
 ) {
-    private var health = 100
-    private var hunger = 0
-    private var happiness = 100
+    private var health = 50
+    private var hunger = 50
+    private var happiness = 50
     private var bathroom = false
     private var dead = false
     private var sick = false
@@ -158,9 +158,8 @@ class Pet (
 
     fun petUpdate() {
         // Calculate new values from time passed
-        //  2 hrs = 7x10^6 milliseconds
         val time = System.currentTimeMillis()
-        var timeInterval : Long = (7.2 * 10.0.pow(6.0)).toLong() // 2hrs
+        var timeInterval : Long = (60000).toLong() // 1 min
 
         // Simulate hunger
         if (time - hungerTime >= timeInterval) {
@@ -175,6 +174,8 @@ class Pet (
             decreaseHappiness(10 * happyCount)
             happyTime = time
         }
+        if (happiness == 0)
+            sick = true
 
         // Simulate health
         if (time - healthTime >= timeInterval && (hunger >= 100 || sick)) {
@@ -203,6 +204,8 @@ class Pet (
     }
 
     fun feed(): Boolean {
+        if (sick)
+            decreaseHealth(10)
         petUpdate()
         var result = true
         decreaseHunger(10)
@@ -217,6 +220,8 @@ class Pet (
     }
 
     fun walk(): Boolean {
+        if (sick)
+            decreaseHealth(10)
         petUpdate()
         val currentTime = System.currentTimeMillis()
         if (currentTime - lastWalk <= 30000) {
@@ -231,6 +236,8 @@ class Pet (
     }
 
     fun play(): Boolean {
+        if (sick)
+            decreaseHealth(10)
         petUpdate()
         val currentTime = System.currentTimeMillis()
         if (currentTime - lastPlay <= 30000) {
@@ -245,6 +252,8 @@ class Pet (
     }
 
     fun groom(): Boolean {
+        if (sick)
+            decreaseHealth(10)
         petUpdate()
         val currentTime = System.currentTimeMillis()
         if (currentTime - lastGroom <= 30000) {

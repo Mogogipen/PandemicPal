@@ -157,8 +157,13 @@ class PetPageActivity : AppCompatActivity() {
                 .into(iv)
     }
 
+    /**
+     * Update pet values in the GUI (no values are changed in pet)
+     */
     private fun updatePet() {
+        // Update and save pet
         pet.petUpdate()
+        pet.save(this)
 
         when(pet.getHealth()){
             in 1..25 -> healthStatusBarImage.setImageResource(heathBars[1])
@@ -184,11 +189,6 @@ class PetPageActivity : AppCompatActivity() {
             else -> happinessStatusBarImage.setImageResource(happinessBars[0])
         }
 
-        if(pet.getHealth() <= 0 || pet.isDead()){
-            // start dead activity
-            startActivity(Intent(this, PetDeadActivity::class.java))
-        }
-
         if (pet.getBathroom()) {
             var alert = AlertDialog.Builder(this)
             alert.setTitle("Toilet")
@@ -196,6 +196,16 @@ class PetPageActivity : AppCompatActivity() {
             alert.setNeutralButton("OK") {_: DialogInterface, _: Int ->}
             alert.show()
         }
+
+        if(pet.getHealth() <= 0 || pet.isDead()){
+            // start dead activity
+            startActivity(Intent(this, PetDeadActivity::class.java))
+        }
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        updatePet()
     }
 
 }
